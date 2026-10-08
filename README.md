@@ -12,7 +12,7 @@ GitHub-native performance regression checks. When a pull request touches a criti
 > that runs on your own runner against a Docker Compose environment (see [MVP](#roadmap)). The GitHub App,
 > managed ephemeral environments and bottleneck hints are planned, not built.
 
-Part of [Simulant Labs](https://github.com/Simulant-Labs): [Behavioral Intelligence](https://github.com/Simulant-Labs/behavioral-intelligence) → [Agentic Load Testing](https://github.com/Simulant-Labs/agentic-load-testing) → Pressure CI.
+Part of [Rhino](https://github.com/rhino-systems): [Behavioral Intelligence](https://github.com/rhino-systems/behavioral-intelligence) → [Agentic Load Testing](https://github.com/rhino-systems/agentic-load-testing) → Pressure CI.
 
 ---
 
@@ -40,7 +40,7 @@ Running a full load test on every PR is too slow and too expensive. Running none
 - **Selective:** only PRs that touch paths you mark as critical trigger a run.
 - **Comparative:** every result is PR vs baseline on the same infrastructure, never PR vs a stale number in a spreadsheet.
 - **Statistical:** it reports a regression only when the difference is larger than the measured noise, and says "inconclusive" when it can't tell.
-- **Realistic:** workloads come from [Agentic Load Testing](https://github.com/Simulant-Labs/agentic-load-testing) scenarios, and eventually from behavior learned by [Behavioral Intelligence](https://github.com/Simulant-Labs/behavioral-intelligence).
+- **Realistic:** workloads come from [Agentic Load Testing](https://github.com/rhino-systems/agentic-load-testing) scenarios, and eventually from behavior learned by [Behavioral Intelligence](https://github.com/rhino-systems/behavioral-intelligence).
 
 ## How it works
 
@@ -190,7 +190,7 @@ Running 250,000 virtual users for 20 minutes on every PR is rarely sensible. Wor
 | `nightly` | Schedule on `main`, or a PR label like `pressure:full` | Larger, longer | Catch smaller regressions, trend tracking |
 | `release` | Release branch / tag | Largest supported | Pre-release confidence |
 
-The scale of each tier is limited by what [Agentic Load Testing](https://github.com/Simulant-Labs/agentic-load-testing#scaling-plan) can actually generate, which starts small.
+The scale of each tier is limited by what [Agentic Load Testing](https://github.com/rhino-systems/agentic-load-testing#scaling-plan) can actually generate, which starts small.
 
 ## Environments
 
@@ -233,7 +233,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
-      - uses: Simulant-Labs/pressure-ci@v0   # does not exist yet
+      - uses: rhino-systems/pressure-ci@v0   # does not exist yet
         with:
           config: .github/pressure.yml
 ```
