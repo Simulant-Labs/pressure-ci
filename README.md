@@ -51,7 +51,7 @@ sequenceDiagram
     participant GH as GitHub
     participant PC as Pressure CI
     participant ENV as Isolated environment
-    participant ALT as Agentic Load Testing
+    participant LT as Agentic Load Testing
 
     Dev->>GH: open / update pull request
     GH->>PC: pull_request event
@@ -62,10 +62,10 @@ sequenceDiagram
         PC->>GH: check: in progress
         PC->>ENV: build + deploy baseline (merge base) and PR
         loop interleaved trials
-            PC->>ALT: run workload against baseline
-            PC->>ALT: run workload against PR
+            PC->>LT: run workload against baseline
+            PC->>LT: run workload against PR
         end
-        ALT-->>PC: run results (histograms, errors, throughput)
+        LT-->>PC: run results (histograms, errors, throughput)
         PC->>PC: compare, test significance, apply thresholds
         PC->>ENV: tear down
         PC->>GH: check result (pass / fail / inconclusive) + PR comment
